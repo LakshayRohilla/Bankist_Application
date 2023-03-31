@@ -9,28 +9,28 @@ const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
-  pin: 1111,
+  pin: 1111
 };
 
 const account2 = {
   owner: 'Jessica Davis',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222,
+  pin: 2222
 };
 
 const account3 = {
   owner: 'Steven Thomas Williams',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
-  pin: 3333,
+  pin: 3333
 };
 
 const account4 = {
   owner: 'Sarah Smith',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
-  pin: 4444,
+  pin: 4444
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -61,6 +61,53 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function(movements) {
+  movements.forEach(function(mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+        <div class='movements__row'>
+          <div class='movements__type movements__type--${type}'>${i + 1} ${type}</div>
+          <div class='movements__value'>${mov}/-Rs</div>
+        </div>
+    `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements(account1.movements);
+
+const createUsernames = function(accs) {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').
+  map(name => name[0]).join('')
+  });
+  // for ( let a of accs ) {
+  //   a.username = a.owner.toLowerCase();
+  // }
+};
+createUsernames(accounts)
+
+const calcDisplayBalance = function(movements) {
+  const balance = movements.reduce((acc, mov) => acc+mov,0);
+  labelBalance.textContent = `${balance}/-Rs`;
+};
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function(movements) {
+  const incomes = movements.filter(mov => mov >0). reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}/-Rs`;
+  const out = movements.filter(mov => mov <0). reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}/-Rs`;
+  const interest = movements.filter(mov => mov > 0).map(deposit => deposit * 1.2/100).filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}/-Rs`;
+  // we added second filter in the interest bcz not to include the interest which is below 1.
+}
+
+calcDisplaySummary(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -68,9 +115,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
+  ['GBP', 'Pound sterling']
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements.filter(mov => mov>0).map(mov => mov*eurToUsd).reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD)
