@@ -86,9 +86,10 @@ const createUsernames = function(accs) {
 };
 createUsernames(accounts);
 
-const calcDisplayBalance = function(movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}/-Rs`;
+const calcDisplayBalance = function(acc) {
+  // Also save the balance for later use so we are adding a property in the object.
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}/-Rs`;
 };
 
 const calcDisplaySummary = function(acc) {
@@ -119,6 +120,15 @@ const eurToUsd = 1.1;
 const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * eurToUsd).reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
 
+const updateUI = function(acc){
+   // Display movements
+    displayMovements(acc.movements);
+    // Display balance
+    calcDisplayBalance(acc);
+    // Display summary
+    calcDisplaySummary(acc);
+}
+
 // EventHandlers
 let currentAccount;
 
@@ -137,12 +147,24 @@ btnLogin.addEventListener('click', function(e) {
     // Make the fields lose its focus
     inputLoginPin.blur();
 
-    // Display movements
-    displayMovements(currentAccount.movements);
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
-    // Display summary
-    calcDisplaySummary(currentAccount);
-
+    //Update UI
+    updateUI(currentAccount);
   }
 });
+
+// Implementing Transfer
+btnTransfer.addEventListener('click', function(e){
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiveAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (amount>0 && receiveAcc && currentAccount.balance >= amount && receiveAcc?.username !== currentAccount.username) {
+    //Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiveAcc.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
+  }
+})
