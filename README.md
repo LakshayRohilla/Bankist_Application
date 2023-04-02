@@ -7,16 +7,16 @@
 ![image](https://user-images.githubusercontent.com/45042261/229334519-bf041e4f-b1c9-4f23-9998-868723599553.png)
 
 **All User Accounts**
-User - 1 account:
+- User - 1 account:
 ![image](https://user-images.githubusercontent.com/45042261/229334576-c7391b7e-0b4d-4ac0-90ab-b61c1dafbdbb.png)
 
-User - 2 account:
+- User - 2 account:
 ![image](https://user-images.githubusercontent.com/45042261/229334631-1a45df7c-eb03-410b-98b4-9ab4d3427120.png)
 
-User - 3 account:
+- User - 3 account:
 ![image](https://user-images.githubusercontent.com/45042261/229334667-51b63580-0e3e-4f64-861e-7d4f70d357d6.png)
 
-User - 4 account:
+- User - 4 account:
 ![image](https://user-images.githubusercontent.com/45042261/229334680-9c3aba41-9597-45a1-8e70-dafeff773e3f.png)
 
 **Money Tranfer**
