@@ -37,3 +37,11 @@
 
 **Close Account**
 ![image](https://user-images.githubusercontent.com/45042261/229335129-b6f95a34-d5ee-4f31-8000-498498297dba.png)
+
+**Sorting the transaction**
+- Before sorting:
+![image](https://user-images.githubusercontent.com/45042261/229348265-92627d7b-dfd3-49ca-84a5-562aebb3ce5e.png)
+
+- After sorting:
+![image](https://user-images.githubusercontent.com/45042261/229348307-0eecb1f2-d98f-48bb-9c17-401e090d7544.png)
+
