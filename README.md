@@ -42,6 +42,14 @@
 - Before sorting:
 ![image](https://user-images.githubusercontent.com/45042261/229348265-92627d7b-dfd3-49ca-84a5-562aebb3ce5e.png)
 
-- After sorting:
+- **After sorting:**
 ![image](https://user-images.githubusercontent.com/45042261/229348307-0eecb1f2-d98f-48bb-9c17-401e090d7544.png)
+
+- **Timer for inactive user timeout:**
+![image](https://user-images.githubusercontent.com/45042261/230779850-ad83d172-df35-4ec2-9b3b-f4cabf681e7a.png)
+**Timer update once user make any activity**
+![image](https://user-images.githubusercontent.com/45042261/230779921-523ef2fc-5df7-4cf9-a2ee-ba435bf88714.png)
+![image](https://user-images.githubusercontent.com/45042261/230779944-6ac10fb8-bd80-44c2-bf67-1dca5260d516.png)
+
+
 
