@@ -1,5 +1,5 @@
 # Bankist_Application
-
+Wanna try this application : https://bankist-application-lr.netlify.app/
 **Flow Chart**
 ![image](https://user-images.githubusercontent.com/45042261/229334527-55135bf5-fb36-4cb9-bc8d-db0fa3473608.png)
 
